@@ -37,13 +37,22 @@ function generatePassword() {
     return;
   }
 
+  // Ensure at least one character from each selected type
+  allChars.forEach(charType => {
+    const randomIndex = Math.floor(Math.random() * charType.length);
+    password += charType[randomIndex];
+  });
+
+  const remainingLength = length - allChars.length;
+
   const combinedChars = allChars.join(",");    // creates a comma separated array from the chanracter type constants delcared in lines 4-7 ...
   const combinedArray = combinedChars.split("");    // .. i feel this is clumsy but it works!
 
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * combinedArray.length); // Selecting random elements from the allChars array. Lenght of array is defined by user input from Ln13
+  for (let i = 0; i < remainingLength; i++) {
+    const randomIndex = Math.floor(Math.random() * combinedArray.length);
     password += combinedArray[randomIndex];
   }
+
 
   document.getElementById("password").textContent = password;
 }
