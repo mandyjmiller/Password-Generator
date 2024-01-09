@@ -1,62 +1,49 @@
-
-// i'M FIRST OF ALL DECLARING MY VARS FOR ACCEPTABLE CHARACTERS
-// Array of special characters to be included in password
-var specialChars = [
-  '@','%','+','\\','/',"'",'!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'
-];
-
-// Array of numeric characters to be included in password
-var numericChars = ['0','1','2','3','4','5','6','7','8','9'];
-
-// Array of lowercase characters to be included in password
-var lowerCaseChars = [
-  'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'
-];
-
-// Array of uppercase characters to be included in password
-var upperCaseChars = [
-  'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
-];
-
-
-
-// Function to prompt user for password options
-function getPasswordOptions() {
-
-}
-
-// Function for getting a random element from an array
-function getRandom(arr) {
-
-}
-
-// Function to generate password with user input
+// Function to generate a random password based on criteria
 function generatePassword() {
-	console.log ("Button pushed!") // just to show that something is happening
-  //PSEUDO CODE TO KEEP IT STRAIGHT IN MY HEAD
-  //Define Function inputs
-  //1. Prompt User for Inputs
-  //  1.1 PW Lenght between 8 and 128 characters
-  //  1.2 Type of characters required: Uppercase, Lowercase, Numerical, Special Chars.. At least 1 type requires
-  //  1.3 Validate all the above  - Lenght, and character type
-  //2. Generate PW
-  //3. Write PW to the 'return' below
 
-	return "Generated pw will go here!" // we haven't defined the input paramenters yet, but 'something' is returned
+// Define the arrays for the accepted character types
+const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numericChars = "0123456789";
+const specialChars = "$@%&*£";
 
+let password = "";
+const allChars = [];  // allChars Empty array which is populated based on the user choice of lowercase / uppercase etc
 
+const length = parseInt(prompt("Please enter the length of the password (between 8 and 128 characters):")); // Prompt user for password options
+if (isNaN(length) || length < 8 || length > 128) {
+alert("Please enter a valid password length between 8 and 128 characters.");   // Validates that pw is correct length
+return;
 }
 
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
-
-  passwordText.value = password;
+if (confirm("Would you like to include lowercase characters? Click OK")) { 
+allChars.push(lowercaseChars);      // If selected, lowercase is added to allChars array
+}
+if (confirm("Would you like to include uppercase characters? Click OK")) { 
+allChars.push(uppercaseChars);      // If selected, uppercase is added to allChars array
+}
+if (confirm("Would you like to include numeric characters? Click OK")) { 
+allChars.push(numericChars);        // If selected, numeric is added to allChars array
+}
+if (confirm("Would you like to include special characters? Click OK")) {
+allChars.push(specialChars);      // If selected, special is added to allChars array
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+if (allChars.length === 0) {
+alert("You must select at least one character type."); // Validates that pw contains at least 1 character type
+return;
+}
+
+const combinedChars = allChars.join(",");
+const combinedArray = combinedChars.split("");
+
+for (let i = 0; i < length; i++) {
+const randomIndex = Math.floor(Math.random() * combinedArray.length); // Selecting random elements from the allChars array. Lenght of array is defined by user input from Ln13 
+password += combinedArray[randomIndex]; 
+}
+
+    document.getElementById("password").textContent = password;
+}
+
+// Add click event listener to the "Generate Password" button
+document.getElementById("generate").addEventListener("click", generatePassword);
