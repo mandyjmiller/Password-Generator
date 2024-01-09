@@ -57,7 +57,7 @@ Shout out to the teaching team at EdX and fellow students for help and collabora
 
 Particular credit to Paul Kelsden's [YouTube Tutorial](https://www.youtube.com/watch?v=x4HUaiazDes)
 
-Other Tutorials and base materials from  [Module 4 Challenge](https://bootcampspot.instructure.com/courses/5651/assignments/67065)
+Other Tutorials and base materials from  [Module 5 Challenge](https://bootcampspot.instructure.com/courses/5651/assignments/67065)
 
 ... and the wider community at [StackOverflow](https://stackoverflow.com/questions/62627469/random-password-generator-with-prompts) for general syntax and troubleshooting when tearing hair out. 
 
