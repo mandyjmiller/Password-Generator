@@ -32,7 +32,18 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-  return "Hello!"
+	console.log ("Button pushed!") // just to show that something is happening
+  //PSEUDO CODE TO KEEP IT STRAIGHT IN MY HEAD
+  //Define Function inputs
+  //1. Prompt User for Inputs
+  //  1.1 PW Lenght between 8 and 128 characters
+  //  1.2 Type of characters required: Uppercase, Lowercase, Numerical, Special Chars.. At least 1 type requires
+  //  1.3 Validate all the above  - Lenght, and character type
+  //2. Generate PW
+  //3. Write PW to the 'return' below
+
+	return "Generated pw will go here!" // we haven't defined the input paramenters yet, but 'something' is returned
+
 
 }
 
